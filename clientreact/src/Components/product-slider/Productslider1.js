@@ -1,24 +1,44 @@
 import React, { useEffect, useState } from "react";
+import cogoToast from "cogo-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Styled from "styled-components";
 import { BsSuitHeartFill, BsCart3, BsBell } from "react-icons/bs";
+import {useSelector} from 'react-redux'
 import axios from "axios";
+const baseUrl = process.env.REACT_APP_URL;
 
 function Productslider1() {
   const [allCourses, setAllCourses] = useState([]);
   const [images, setImages] = useState([]);
+  const user = useSelector((state) => state.user)
   // const [currentIndex, setCurrentIndex] = useState(0);
 
   const responseCourse = async () => {
     try {
       const res = await axios.get(
-        "https://bigbulls.co.in/api/v1/auth/getAllCourses"
+        `${baseUrl}/getAllCourses`
       );
-      setAllCourses(res.data);
+      setAllCourses(res.data.result);
     } catch (error) {
       console.log(error);
     }
   };
+  const addCartto = async (id) => {
+      if(!user.id){
+        cogoToast.error('login first')
+        return;
+      }
+      try {
+          const res = await axios.post(`${baseUrl}/add-to-cart`, {
+            userId: user.id,
+            itemId: id,
+          });
+          cogoToast.success('Course added to the cart');
+      }  catch (error) {
+        console.log(error);
+        cogoToast.error("Course already in the cart");
+      }
+  }
 
   console.log(allCourses);
 
@@ -123,9 +143,12 @@ function Productslider1() {
 
                           <h5 className="text-center">Price - ₹{item.price}</h5>
                           <div className="d-flex justify-content-center">
-                            <a href="/" className="btn btn-primary mt-1">
+                            <button 
+                            className="btn btn-primary mt-1"
+                            onClick={() => addCartto(item.id)}
+                            >
                               Add to Cart
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -185,9 +208,12 @@ function Productslider1() {
 
                         <h5 className="text-center">Price - ₹10000</h5>
                         <div className="d-flex justify-content-center">
-                          <a href="/" className="btn btn-primary mt-1">
-                            Add to Cart
-                          </a>
+                        <button 
+                            className="btn btn-primary mt-1"
+                            onClick={() => addCartto(8)}
+                            >
+                              Add to Cart
+                            </button>
                         </div>
                       </div>
                     </div>
@@ -238,9 +264,12 @@ function Productslider1() {
 
                         <h5 className="text-center">Price - ₹10000</h5>
                         <div className="d-flex justify-content-center">
-                          <a href="/" className="btn btn-primary mt-1">
-                            Add to Cart
-                          </a>
+                        <button 
+                            className="btn btn-primary mt-1"
+                            onClick={() => addCartto(9)}
+                            >
+                              Add to Cart
+                            </button>
                         </div>
                       </div>
                     </div>

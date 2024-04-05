@@ -370,6 +370,7 @@ const updateUsers = async (req, res) => {
 };
 
 const getUserViaId = async (req, res) => {
+  console.log('why 404')
   try {
     const userId = req.params.id;
     const getQuery = `SELECT * FROM register WHERE id = ?`;

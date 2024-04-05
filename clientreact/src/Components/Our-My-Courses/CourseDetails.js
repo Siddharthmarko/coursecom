@@ -76,6 +76,10 @@ const CourseDetails = () => {
   // console.log(storedCourseData.name);
 
   const addCartTo = async (id) => {
+    if(!user.id){
+      cogoToast.error("login first");
+      return;
+    }
     try {
       const response = await axios.post(
         `https://bigbulls.co.in/api/v1/auth/add-to-cart`,

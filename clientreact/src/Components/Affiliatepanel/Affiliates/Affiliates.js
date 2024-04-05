@@ -9,13 +9,11 @@ import copy from "copy-to-clipboard";
 
 const Affiliates = () => {
 
-
     const [invoices, setInvoices] = useState([]);
     const user = Cookies.get("user");
     let emailUser = null
     if (user != null) {
         emailUser = JSON.parse(user).email
-
     };
 
     // let navigate = useNavigate();

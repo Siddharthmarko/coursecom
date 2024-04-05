@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import MapLocation from "../component/MapLocation";
 import cogoToast from "cogo-toast";
+const baseUrl = process.env.url;
 
 const Contact = () => {
   const [fullname, setFullName] = useState("");
@@ -21,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      await axios.post("https://bigbulls.co.in/api/v1/auth/contactInquiry", {
+      await axios.post(`${baseUrl}/contactInquiry`, {
         name: fullname,
         email,
         message,

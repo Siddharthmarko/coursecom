@@ -10,7 +10,6 @@ const { fileURLToPath } = require("url");
 const bodyParser = require("body-parser");
 
 dotenv.config();
-
 // rest object
 const app = express();
 

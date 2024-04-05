@@ -9,6 +9,7 @@ import { BsSuitHeartFill } from "react-icons/bs";
 import cogoToast from "cogo-toast";
 import { useSelector } from "react-redux";
 import OwlCarousel from "react-owl-carousel2";
+const baseUrl = process.env.REACT_APP_URL;
 
 const Homepagecoursecardcontainer = () => {
   const [allCourses, setAllCourses] = useState([]);
@@ -18,9 +19,12 @@ const Homepagecoursecardcontainer = () => {
   const responseCourse = async () => {
     try {
       const res = await axios.get(
-        "https://bigbulls.co.in/api/v1/auth/getAllCourses"
+        // "https://bigbulls.co.in/api/v1/auth/getAllCourses"
+        `${baseUrl}/getAllCourses`
       );
-      setAllCourses(res.data);
+      console.log(res);
+      setAllCourses(res.data.result);
+      // setAllCourses(res.result);
     } catch (error) {
       console.log(error);
     }
@@ -31,9 +35,13 @@ const Homepagecoursecardcontainer = () => {
   }, []);
 
   const addCartTo = async (id) => {
+    if(!user.id){
+      cogoToast.error("login first");
+      return
+    }
     try {
       const response = await axios.post(
-        "https://bigbulls.co.in/api/v1/auth/add-to-cart",
+        `${baseUrl}/add-to-cart`,
         {
           userId: user.id,
           itemId: id,
@@ -61,11 +69,12 @@ const Homepagecoursecardcontainer = () => {
       1000: { items: 5 },
     },
   };
-
-  const test = allCourses.map((item, index) => {
-    console.log(item);
-    console.log(index);
-  });
+console.log(allCourses);
+  // no use here
+  // const test = allCourses.map((item, index) => {
+  //   console.log(item);
+  //   console.log(index);
+  // });
   return (
     <Container>
       <div className="home-all-card-container-outer">

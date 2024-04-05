@@ -10,6 +10,7 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import cogoToast from "cogo-toast";
+const baseUrl = process.env.REACT_APP_URL;
 
 const Enrollnow = () => {
   const navigate = useNavigate();
@@ -113,8 +114,8 @@ const Enrollnow = () => {
     e.preventDefault();
 
     const formData = new FormData();
-
-    // Append user.data fields to formData
+    
+        // Append user.data fields to formData
     for (const key in data) {
       formData.append(key, data[key]);
     }
@@ -123,7 +124,7 @@ const Enrollnow = () => {
 
     try {
       const response = await axios.post(
-        "https://bigbulls.co.in/api/v1/auth/register",
+        `${baseUrl}/register`,
         formData,
         {
           headers: {

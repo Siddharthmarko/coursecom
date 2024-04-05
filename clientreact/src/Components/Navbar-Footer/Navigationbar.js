@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BsSuitHeart, BsSuitHeartFill, BsCart3, BsBell } from "react-icons/bs";
 import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
+const baseUrl = process.env.url;
 
 const Navigationbar = () => {
   const navigate = useNavigate();
@@ -58,8 +59,10 @@ const Navigationbar = () => {
   const getUserProfile = async () => {
     try {
       const response = await axios.get(
-        `https://bigbulls.co.in/api/v1/auth/getUserViaId/${user.id}`
+        // `${baseUrl}/getUserViaId/${user.id}`
+        `${baseUrl}/getUserViaId/${4}`
       );
+      console.log('getting user profile');
       console.log(response);
       setData(response.data.user);
     } catch (error) {
