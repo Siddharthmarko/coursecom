@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import PhotoProfile from "../Components/userprofilesection/PhotoProfile";
 import axios from "axios";
 import DeleteProfile from "../Components/DeleteProfile";
+const baseUrl = process.env.REACT_APP_URL;
 
 const EditProfile = () => {
   const user = useSelector((state) => state.user);
@@ -20,16 +21,16 @@ const EditProfile = () => {
   const getUserProfile = async () => {
     try {
       const response = await axios.get(
-        `https://bigbulls.co.in/api/v1/auth/getUserViaId/${user.id}`
+        `${baseUrl}/getUserViaId/${user.id}`
       );
       console.log(response);
-      setData(response.data.user);
+      setData(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(data.profile_picture);
+  console.log(data?.profile_picture);
   useEffect(() => {
     getUserProfile();
   }, []);
@@ -43,7 +44,7 @@ const EditProfile = () => {
                 <div className="leftdiv">
                   <div className="imgdc">
                     <img
-                      src={`${data.profile_picture}`}
+                      src={`${data?.profile_picture}`}
                       alt="profile"
                       srcset=""
                     />
