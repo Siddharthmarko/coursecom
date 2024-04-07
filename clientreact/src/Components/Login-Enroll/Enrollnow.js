@@ -12,23 +12,25 @@ import "react-datepicker/dist/react-datepicker.css";
 import cogoToast from "cogo-toast";
 const baseUrl = process.env.REACT_APP_URL;
 
+let dummyData = {
+    name: 'username',
+    email: 'username@gmail.com',
+    phone: "1234567890",
+    gender: 'male',
+    password: "123456",
+    cpassword: "123456",
+    country: "India",
+    state: "Madhya Pradesh",
+    city: "jabalpur",
+    address: "Garha",
+    dob: "",
+    refferelCode: "",
+}
+
 const Enrollnow = () => {
   const navigate = useNavigate();
   const [profilePicture, setProfilePicture] = useState(null);
-    const [data, setData] = useState({
-      name: "",
-      email: "",
-      phone: "",
-      gender: "",
-      password: "",
-      cpassword: "",
-      country: "",
-      state: "",
-      city: "",
-      address: "",
-      dob: "",
-      refferelCode: "",
-    });
+    const [data, setData] = useState(dummyData);
 
   const handleBirthCertificateChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -121,7 +123,15 @@ const Enrollnow = () => {
     }
     formData.append("profilePicture", profilePicture);
     console.log(data, profilePicture);
+    const formDataArray = [];
 
+    // Iterate over the entries and push them to the array
+    for (let entry of formData.entries()) {
+      formDataArray.push(entry);
+    }
+    
+    // Print the array
+    console.log(formDataArray)
     try {
       const response = await axios.post(
         `${baseUrl}/register`,
@@ -136,12 +146,12 @@ const Enrollnow = () => {
       cogoToast.success("Registration successful!");
       navigate("/login");
 
-      // if (response.status === 201) {
+      if (response.status === 201) {
 
-      // } else {
-      //   cogoToast.error(response);
-      //   // navigate("/login");
-      // }
+      } else {
+        cogoToast.error(response);
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error);
       cogoToast.error(error.response.data || "An error occurred");

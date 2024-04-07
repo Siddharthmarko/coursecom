@@ -10,20 +10,34 @@ const PORT = process.env.PORT;
 
 const registerController = async (req, res) => {
   try {
-    const { email, password } = req.body;
-
+    const { email, password, name,
+      phone,
+      gender,
+      cpassword,
+      country,
+      state,
+      city,
+      address,
+      dob,
+      refferelCode,
+      profilePicture    
+    } = req.body;
     // Validations
     const requiredFields = [email, password];
-    if (requiredFields.some((field) => !field)) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
+    // if (requiredFields.some((field) => !field)) {
+    //   return res.status(400).json({ error: "All fields are required" });
+    // }
 
     // Hash the "password" and "cpassword"
+    console.log('line number 32')
     const saltRounds = 10;
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
-
+    const hashedCPassword = bcrypt.hashSync(cpassword, saltRounds);
+    console.log('line number 35')
+    
     // Check if the user already exists
     const checkUserQuery = "SELECT * FROM register WHERE email = ?";
+    console.log('line number 39')
     console.log("email", email);
 
     db.query(checkUserQuery, [email], (err, result) => {
@@ -33,7 +47,9 @@ const registerController = async (req, res) => {
       } else {
         // Check if there are any rows in the result
         if (result.length > 0) {
-          return res.status(400).json({
+          console.log('line numebr 50');
+
+          return res.status(201).json({
             error: "User already exists.",
           });
         } else {
@@ -55,7 +71,7 @@ const registerController = async (req, res) => {
             state,
             address,
             dob,
-            imageUrl,
+            profilePicture,
             refferelCode,
           ];
 
@@ -76,6 +92,7 @@ const registerController = async (req, res) => {
             }
           );
         }
+        console.log('line number 94');
       }
     });
   } catch (error) {
@@ -445,15 +462,18 @@ const AdminRegister = async (req, res) => {
 };
 
 const adminLoginUser = async (req, res) => {
+  console.log('login route');
   try {
     const { email, password } = req.body;
+    console.log(email, password);
     if (!email || !password) {
+      console.log('line numebr  468');
       return res.status(404).json({
         success: false,
         message: "Invalid email or password",
       });
     }
-
+    console.log('line number 474')
     db.query(
       `SELECT * FROM admin_register WHERE email = ? AND status = 'active'`,
       [email],
@@ -465,6 +485,7 @@ const adminLoginUser = async (req, res) => {
             message: "Internal server error",
           });
         }
+        console.log('line number 468');
         if (result.length === 0) {
           return res.status(500).json({
             success: false,

@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import cogoToast from "cogo-toast";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/slices/UserSlices";
-const baseUrl = process.env.url;
+const baseUrl = process.env.REACT_APP_URL;
 // import { setUser } from "./userSlice";
 
 const Login = () => {
@@ -32,27 +32,9 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    if(email === 'alternate@gmail.com' && password === '123456'){
-      let userData = {
-        name: 'alternate',
-        id: 5,
-      }
-      localStorage.setItem("userData", JSON.stringify(userData));
-      dispatch(setUser(userData));
-      cogoToast.success("Login Successfull");
-      navigate("/edit-profile");
-      return;
-    }
       try {
-      const response = await axios.post(
         // "https://bigbulls.co.in/api/v1/auth/login",
-        `${baseUrl}/adminLoginUser`,
-        {
-          email,
-          password,
-        }
-      );
-        
+      const response = await axios.post(`${baseUrl}/adminLoginUser`,{ email, password, } );
       // console.log(response.data);
       console.log(response);
 
@@ -60,7 +42,7 @@ const Login = () => {
       Cookies.set("authToken", response.token, { expires: 7 });
       const userData = {
         name: response.user.name,
-        id: response.user.id,
+        id: response.user.id, 
         // name: response.data.user.name,
         // id: response.data.user.id,
       };
@@ -72,6 +54,7 @@ const Login = () => {
     } catch (error) {
       console.log(error.response.data);
       cogoToast.error(error.response.data);
+      console.log('line number 64');
       // console.log(error.response.data);
       // cogoToast.error(error.response.data);
     }
