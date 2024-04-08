@@ -78,17 +78,19 @@ const Navigationbar = () => {
   return (
     <>
       <Container>
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg">
+          <div className="container-fluid">
             <Link to="/">
+            <div>
               <img
-                src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1704632318/bigbull/bigbull_logosmall_psuvum.png"
-                class="navbar-brand"
+                // src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1704632318/bigbull/bigbull_logosmall_psuvum.png"
+                src="https://images-platform.99static.com//KlBLMX8dQrcq6hZGnxf5HSnG29I=/8x543:525x1060/fit-in/500x500/99designs-contests-attachments/123/123360/attachment_123360235"
                 alt="logo"
               />
+          </div>
             </Link>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -96,12 +98,12 @@ const Navigationbar = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon">
+              <span className="navbar-toggler-icon">
                 <RxHamburgerMenu />
               </span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                 {navLinks.map((link, index) => (
                   <li className="nav-item" key={index}>
                     <Link
@@ -115,7 +117,7 @@ const Navigationbar = () => {
                   </li>
                 ))}
               </ul>
-              <div class="d-flex align-items-center" role="search">
+              <div className="d-flex align-items-center" role="search">
                 {authToken ? (
                   <>
                     <Link className="nav-link subLink" to="/mylearning">
@@ -132,7 +134,7 @@ const Navigationbar = () => {
                       <BsBell className="icons" />
                     </Link>
                     <Link className="nav-link" to="/public-view-profile">
-                      <div class="icon-container">
+                      <div className="icon-container">
                         <img src={data.profile_picture} alt="profile" />
                         {/* <RxAvatar className="icons" /> */}
                         <ul class="list rounded">
@@ -155,21 +157,21 @@ const Navigationbar = () => {
                             </div>
                           </li>
                           <li>
-                            <hr class="dropdown-divider" />
+                            <hr className="dropdown-divider" />
                           </li>
                           <li>
                             <Link to="/notification">Notifications</Link>
                           </li>
 
                           <li>
-                            <hr class="dropdown-divider" />
+                            <hr className="dropdown-divider" />
                           </li>
                           <li>Public Profile</li>
                           <li>
                             <Link to="/edit-profile">Edit Profile</Link>
                           </li>
                           <li>
-                            <hr class="dropdown-divider" />
+                            <hr className="dropdown-divider" />
                           </li>
                           <li>
                             <Link to="/help-page">Help</Link>
@@ -213,9 +215,6 @@ const Container = styled.div`
       font-weight: bold;
       margin-top: 1rem;
     }
-  }
-  nav {
-    background: #105d87;
   }
   .nav-link {
     color: #ffffff;
@@ -287,8 +286,4 @@ const Container = styled.div`
     align-items: center;
   }
 
-  img {
-    height: 5rem;
-    width: 11rem;
-  }
 `;
