@@ -46,7 +46,7 @@ router.post("/add-course", upload.single("thumbnails"), createCourse);
 // routing
 // REGISTER || METHOD POST
 router.post("/register", upload.single("profilePicture"), registerController);
-// router.post("/login", loginController);
+router.post("/login", loginController);
 router.post("/sendOtp", sendOtp);
 router.post("/updatePassword", updatePassword);
 router.post("/add-to-cart", addToCart);

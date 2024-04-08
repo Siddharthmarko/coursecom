@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import cogoToast from "cogo-toast";
+const baseUrl = process.env.REACT_APP_URL;
 
 const UpdateProfile = () => {
   const user = useSelector((state) => state.user);
@@ -36,7 +37,7 @@ const UpdateProfile = () => {
       setProfilePicture(selectedFile);
     }
   };
-  console.log(profilePicture);
+  // console.log(profilePicture);
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -58,10 +59,10 @@ const UpdateProfile = () => {
   const getUserProfile = async () => {
     try {
       const response = await axios.get(
-        `https://bigbulls.co.in/api/v1/auth/getUserViaId/${user.id}`
+        `${baseUrl}/getUserViaId/${user.id}`
       );
       console.log(response);
-      setData(response.data.user);
+      setData(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -131,7 +132,7 @@ const UpdateProfile = () => {
     console.log(updateData, profilePicture);
     try {
       const response = await axios.put(
-        `https://bigbulls.co.in/api/v1/auth/update-users/${user.id}`,
+        `${baseUrl}/update-users/${user.id}`,
         formData,
         {
           headers: {
@@ -148,7 +149,7 @@ const UpdateProfile = () => {
     }
   };
 
-  console.log(data.profile_picture);
+  // console.log(data?.profile_picture);
   useEffect(() => {
     getUserProfile();
   }, []);

@@ -34,26 +34,28 @@ const Login = () => {
     e.preventDefault();
       try {
         // "https://bigbulls.co.in/api/v1/auth/login",
-      const response = await axios.post(`${baseUrl}/adminLoginUser`,{ email, password, } );
+      const response = await axios.post(`${baseUrl}/login`,{ email, password, } );
       // console.log(response.data);
       console.log(response);
 
       // Cookies.set("authToken", response.data.token, { expires: 7 });
-      Cookies.set("authToken", response.token, { expires: 7 });
+      console.log('line number 42');
+      Cookies.set("authToken", response.data.token, { expires: 7 });
       const userData = {
-        name: response.user.name,
-        id: response.user.id, 
-        // name: response.data.user.name,
-        // id: response.data.user.id,
+        // name: response.user.name,
+        // id: response.user.id, 
+        name: response.data.user.name,
+        id: response.data.user.id,
       };
+      console.log('line number 50');
       console.log(userData);
       localStorage.setItem("userData", JSON.stringify(userData));
       dispatch(setUser(userData));
       cogoToast.success("Login Successfull");
       navigate("/edit-profile");
     } catch (error) {
-      console.log(error.response.data);
-      cogoToast.error(error.response.data);
+      console.log(error.response);
+      cogoToast.error(error.response);
       console.log('line number 64');
       // console.log(error.response.data);
       // cogoToast.error(error.response.data);

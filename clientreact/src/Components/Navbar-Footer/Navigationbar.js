@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { BsSuitHeart, BsSuitHeartFill, BsCart3, BsBell } from "react-icons/bs";
 import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
-const baseUrl = process.env.url;
+const baseUrl = process.env.REACT_APP_URL;
 
 const Navigationbar = () => {
   const navigate = useNavigate();
@@ -59,12 +59,11 @@ const Navigationbar = () => {
   const getUserProfile = async () => {
     try {
       const response = await axios.get(
-        // `${baseUrl}/getUserViaId/${user.id}`
-        `${baseUrl}/getUserViaId/${4}`
+        `${baseUrl}/getUserViaId/${user.id}`
       );
       console.log('getting user profile');
       console.log(response);
-      setData(response.data.user);
+      setData(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -134,7 +133,7 @@ const Navigationbar = () => {
                       <BsBell className="icons" />
                     </Link>
                     <Link className="nav-link" to="/public-view-profile">
-                      <div className="icon-container">
+                      <div class="icon-container">
                         <img src={data.profile_picture} alt="profile" />
                         {/* <RxAvatar className="icons" /> */}
                         <ul class="list rounded">
