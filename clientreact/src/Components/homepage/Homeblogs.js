@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Styled from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 function Homeblogs() {
@@ -14,7 +14,7 @@ function Homeblogs() {
         </div>
         <div className="container mb-5">
           <div className="card-group">
-            <div className="card d-flex mr-3 shadow-0 h-100  ">
+            <div className="card d-flex mr-5 shadow-0 h-100 border-0">
               <Link to="/blog-first">
                 <img
                   className="card-img-top fluid rounded-5"
@@ -23,15 +23,15 @@ function Homeblogs() {
                   alt="Video Thumbnail"
                 />
               </Link>
-              <div className="card-body">
+              <div className="card-body  blog-title">
                 <Link to="/blog-first">
-                  <p>September 29, 2023 Time: 12:00 PM (noon)</p>
-                  <p>my first blog </p>
+                <h3>my second blog</h3>
+                <p>September 29, 2023 Time: 12:00 PM (noon)</p>
                 </Link>
               </div>
             </div>
 
-            <div className="card d-flex mr-3 shadow-0 h-100  ">
+            <div className="card d-flex mr-3 shadow-0 h-100 border-0 ">
               <Link to="/blog-second">
                 <img
                   className=" card-img-top fluid rounded-5"
@@ -39,10 +39,10 @@ function Homeblogs() {
                   alt="Video Thumbnail"
                 />
               </Link>
-              <div className="card-body">
+              <div className="card-body blog-title ">
                 <Link to="/blog-second">
+                  <h3>my second blog</h3>
                   <p>September 29, 2023 Time: 12:00 PM (noon)</p>
-                  <p>my second blog</p>
                 </Link>
               </div>
             </div>
@@ -53,7 +53,7 @@ function Homeblogs() {
   );
 }
 export default Homeblogs;
-const Container = Styled.div`
+const Container = styled.div`
 #lb{
     font-size:50px;
     font-weight:700;
@@ -61,6 +61,17 @@ const Container = Styled.div`
 }
 a{
     text-decoration:none;
+}
+.blog-title h3, p{
+    color: black;  
+}
+.blog-title h3{
+  color: #000000d1;
+    font-weight: 700;
+    margin: 10px 10px;
+}
+.blog-title p{
+  margin: 0 10px;
 }
 
 `;

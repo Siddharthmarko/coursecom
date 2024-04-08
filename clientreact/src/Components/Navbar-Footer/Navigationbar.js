@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import logo from '../../images/logo.png';
+import defaultUser from '../../images/defaulUserImage.png'
 // import mainlogo from "../photos/mainlogo.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navigationbar.css";
@@ -80,10 +82,9 @@ const Navigationbar = () => {
         <nav className="navbar navbar-expand-lg">
           <div className="container-fluid">
             <Link to="/">
-            <div>
+            <div className="image-contain" >
               <img
-                // src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1704632318/bigbull/bigbull_logosmall_psuvum.png"
-                src="https://images-platform.99static.com//KlBLMX8dQrcq6hZGnxf5HSnG29I=/8x543:525x1060/fit-in/500x500/99designs-contests-attachments/123/123360/attachment_123360235"
+                src={logo}
                 alt="logo"
               />
           </div>
@@ -116,7 +117,7 @@ const Navigationbar = () => {
                   </li>
                 ))}
               </ul>
-              <div className="d-flex align-items-center" role="search">
+              <div className="d-flex align-items-center gap-3" role="search">
                 {authToken ? (
                   <>
                     <Link className="nav-link subLink" to="/mylearning">
@@ -134,7 +135,7 @@ const Navigationbar = () => {
                     </Link>
                     <Link className="nav-link" to="/public-view-profile">
                       <div class="icon-container">
-                        <img src={data.profile_picture} alt="profile" />
+                        <img src={data.profile_picture || defaultUser} alt="profile" />
                         {/* <RxAvatar className="icons" /> */}
                         <ul class="list rounded">
                           <li>
@@ -216,14 +217,14 @@ const Container = styled.div`
     }
   }
   .nav-link {
-    color: #ffffff;
+    color: black;
     font-weight: bold;
     // background: #000;
     // margin-left: 1rem;
     // border-radius: 5px;
   }
   .navLk {
-    color: #ffffff;
+    color: black;
     font-weight: bold;
   }
   .active {
@@ -238,13 +239,13 @@ const Container = styled.div`
   .icon-container {
     position: relative;
     display: inline-block;
+    width: 40px;
     /* width: 3rem;
     height: 3rem;
     overflow: hidden;
     border-radius: 2rem; */
     img {
-      width: 3rem;
-      height: 3rem;
+      width: 100%;
       object-fit: cover;
       border-radius: 2rem;
     }
@@ -283,6 +284,9 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .image-contain {
+    width: 70px;
   }
 
 `;

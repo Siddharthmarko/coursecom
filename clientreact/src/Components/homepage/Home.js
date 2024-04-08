@@ -72,28 +72,28 @@ const Home = () => {
           {/* Carousel */}
           <div className="carousel-container">
             <Carousel>
-              <Carousel.Item interval={1000}>
+              <Carousel.Item interval={1000} >
                 <img
                   className="d-block w-100 cr-img"
-                  src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1703232532/bigbull/bb3_smmawt.png"
+                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="First slide"
                   // style={{ height: "35rem" }}
                 />
               </Carousel.Item>
-              <Carousel.Item interval={1000}>
+              <Carousel.Item interval={1000} >
                 <img
                   className="d-block w-100 cr-img"
                   // src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1703231921/bigbull/Bigbulls_Course_1_wsnw1w.png"
-                  src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1704629586/bigbull/BIGBULLS_PROVIDES_1_ccuujw.png"
+                  src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Second slide"
                   // style={{ height: "35rem" }}
                 />
               </Carousel.Item>
-              <Carousel.Item interval={1000}>
+              <Carousel.Item interval={1000} >
                 <img
                   className="d-block w-100 cr-img"
                   // src={carouselimg1}
-                  src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1704630665/bigbull/NEW_REGISTRATION_dddgfd.png"
+                  src="https://images.unsplash.com/photo-1485988412941-77a35537dae4?q=80&w=1496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="third slide"
                   // style={{ height: "35rem" }}
                 />
@@ -105,7 +105,7 @@ const Home = () => {
         <span>We are Bigbulls</span>
       </div> */}
           <Homepagecoursecardcontainer />
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80">
             <path
               fill="#85110F"
               fillOpacity="1"
@@ -118,7 +118,7 @@ const Home = () => {
                 Who We Are: Your Gateway to Financial Wisdom 📈💡
               </h2>
               <p className="textjustify">
-                At Bigbulls, we're not just another corner of the internet;
+                {/* At Bigbulls, we're not just another corner of the internet;
                 we're your go-to destination for unlocking the mysteries of
                 finance. Here's our identity in a nutshell: Educators & Guides:
                 We're a team of passionate educators and finance aficionados
@@ -141,18 +141,14 @@ const Home = () => {
                 help you navigate your financial journey. Community Builders:
                 Join our vibrant community! Share insights, seek advice, and
                 engage with others who share your passion for financial growth.
-                Together, we're stronger and wiser.
+                Together, we're stronger and wiser. */}
+                At Bigbulls, we're your finance destination, offering simplified
+                 expertise. We're educators, advocates of empowerment, your digital
+                  learning hub, champions of inclusivity, your financial ally, and 
+                  community builders. Join us to unlock financial mysteries and grow together.
               </p>
             </div>
           </div>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 160">
-            <path
-              fill="#85110F"
-              fillOpacity="1"
-              d="M0,192L120,176C240,160,480,128,720,122.7C960,117,1200,139,1320,149.3L1440,160L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"
-            ></path>
-          </svg>
-
           <Productslider1 />
           {/* img -text */}
           <div className="hrline"></div>
@@ -617,9 +613,9 @@ const Container = styled.div`
       display: none;
     }
   }
-
   .cr-img {
-    height: 35rem;
+    height: 600px;
+    object-fit: cover;
     @media screen and (max-width: 500px) {
       height: 20rem !important;
     }

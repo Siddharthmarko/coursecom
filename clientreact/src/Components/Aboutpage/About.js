@@ -1,5 +1,5 @@
 import React from "react";
-import Styled from "styled-components";
+import styled from "styled-components";
 import backgroundImg from "../../image/bgwebp.webp";
 import aboutbanner from "../../image/About_bbtone.webp";
 import { GiSkills } from "react-icons/gi";
@@ -11,25 +11,28 @@ function Aboutus() {
         <div>{/* <img src={aboutbanner} alt="about" /> */}</div>
         <div className="container-fluid bgColor">
           <div className="row">
-            <div className="col-sm-6">
-              <h2>About Us</h2>
-              <p>
-                Welcome to Bigbulls where we believe that financial knowledge is
-                the key to a secure future. We are dedicated to providing you
-                with comprehensive and accessible financial education that will
-                pave the way for your prosperity.
-              </p>
-              <p>
-                Our personalized approach and industry expertise set us apart,
-                ensuring that you receive tailored guidance for your specific
-                financial goals.
-              </p>
+          <div className="about-title">
 
+            
+<h2>About Us</h2>
+<p>
+  Welcome to Bigbulls where we believe that financial knowledge is
+  the key to a secure future. We are dedicated to providing you
+  with comprehensive and accessible financial education that will
+  pave the way for your prosperity.
+</p>
+<p>
+  Our personalized approach and industry expertise set us apart,
+  ensuring that you receive tailored guidance for your specific
+  financial goals.
+</p>
+</div>
+            <div className="col-sm-7">
               <p className="d-flex flex-row align-items-center mt-5">
                 <span className=" iconkey">
                   <img
                     src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1700389872/bigbull/skills_1_bx45nn.png"
-                    width={"100px"}
+                    width={"80px"}
                     alt="key"
                   />
                 </span>
@@ -41,18 +44,18 @@ function Aboutus() {
               </p>
 
               <p className="d-flex flex-row align-items-center">
-                <span className=" iconkey">
-                  <img
-                    src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1700390714/bigbull/tools_kkdnuj.png"
-                    width={"100px"}
-                    alt="key"
-                  />
-                </span>
                 <span className="mx-4 content">
                   <strong>
                     Interactive tools for practical application of financial
                     strategies
                   </strong>
+                </span>
+                <span className=" iconkey">
+                  <img
+                    src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1700390714/bigbull/tools_kkdnuj.png"
+                    width={"80px"}
+                    alt="key"
+                  />
                 </span>
               </p>
 
@@ -60,7 +63,7 @@ function Aboutus() {
                 <span className=" iconkey">
                   <img
                     src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1700390980/bigbull/consult_zoskcl.png"
-                    width={"100px"}
+                    width={"80px"}
                     alt="icon"
                   />
                 </span>
@@ -77,7 +80,7 @@ function Aboutus() {
                 </button>
               </Link>
             </div>
-            <div className="col-sm-6 ">
+            <div className="col-sm-5 image-contain">
               <img
                 className="img-fluid"
                 src="https://res.cloudinary.com/dq5upuxm8/image/upload/v1697631822/bullt_p8ivfj.png"
@@ -403,7 +406,7 @@ function Aboutus() {
 }
 
 export default Aboutus;
-const Container = Styled.div`
+const Container = styled.div`
 background: url("https://res.cloudinary.com/dq5upuxm8/image/upload/v1696838093/backgroupbb_t9p15q.png");
 // margin-top:6rem;
 .bgColor {
@@ -412,6 +415,15 @@ background: url("https://res.cloudinary.com/dq5upuxm8/image/upload/v1696838093/b
     @media screen and (max-width:500px){
       padding:20px;
     }
+}
+.about-title{
+  width:100%;
+  padding: 20px 50px;
+  text-align: center;
+   p  {
+    width: 850px;
+    margin: 10px auto;
+      }
 }
 .card-img-top{
   height:250px;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cogoToast from "cogo-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Styled from "styled-components";
+import styled from "styled-components";
 import { BsSuitHeartFill, BsCart3, BsBell } from "react-icons/bs";
 import {useSelector} from 'react-redux'
 import axios from "axios";
@@ -85,7 +85,7 @@ function Productslider1() {
             </li>
           </ul>
           <div
-            className="tab-content border ms-3 me-3 my-3 mb-5"
+            className="tab-content my-3 mb-5 bg-light"
             id="pills-tabContent"
           >
             <div
@@ -98,12 +98,13 @@ function Productslider1() {
                 {allCourses.slice(0, 4).map((item, index) => (
                   <div
                     key={index}
-                    className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12"
+                    className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 course-box"
                   >
-                    <div className="card course-card d-flex mr-3 border">
+                    <div className="card course-card d-flex border-0 ">
                       <div className="relative">
                         <img
-                          src={item.thumbnails}
+                          // src={item.thumbnails}
+                          src="https://pbs.twimg.com/media/GBUMcNwWQAEWtb_.jpg:large"
                           className="card-img-top"
                           alt="Video Thumbnail"
                         />
@@ -164,7 +165,7 @@ function Productslider1() {
               aria-labelledby="pills-java-tab"
             >
               <div className="row">
-                <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 course-box">
                   <div className="card course-card d-flex mr-3 border">
                     <div className="relative">
                       <img
@@ -220,7 +221,7 @@ function Productslider1() {
                   </div>
                 </div>
 
-                <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 course-box">
                   <div className="card course-card d-flex mr-3 border">
                     <div className="relative">
                       <img
@@ -915,29 +916,9 @@ function Productslider1() {
 }
 export default Productslider1;
 
-const Container = Styled.div`
-  #exc{
-    color:#583B04;
-    font-size:50px;
-    font-weight:700;
-  }
-
-  .course-card {
-    height: 29rem !important;
-    width:100%;
-  }
-  h5 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 0;
-  }
-  p {
-    margin: 0;
-  }
-
-  .icons {
-    font-size: 1.5rem;
-    color: white;
-  }
-  
+const Container = styled.div`
+.course-box {
+  box-shadow: 13px 18px 32px -19px rgba(0,0,0,0.75);
+  margin-right: 40px
+}
 `;

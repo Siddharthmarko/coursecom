@@ -83,13 +83,14 @@ console.log(allCourses);
             Special Offers
           </h2>
         </div>
-        <OwlCarousel options={options}>
+        <div className="carousal-container">
           {allCourses.map((item, index) => (
             <div key={index} className="item">
               <div className="card course-card border rounded">
                 <div className="relative">
                   <img
-                    src={item.thumbnails}
+                    // src={item.thumbnails}
+                    src="https://media.licdn.com/dms/image/C5622AQGcfWMFz8FKZA/feedshare-shrink_800/0/1668188853070?e=2147483647&v=beta&t=ou4Ca0YUUYd139KHMgxRaefDD89y7fZWWk5slxfZkpM"
                     className="card-img-top"
                     alt="Course Thumbnail"
                   />
@@ -132,7 +133,7 @@ console.log(allCourses);
               </div>
             </div>
           ))}
-        </OwlCarousel>
+        </div>
       </div>
       <ToastContainer />
     </Container>
@@ -142,9 +143,19 @@ console.log(allCourses);
 export default Homepagecoursecardcontainer;
 
 const Container = styled.div`
+  overflow: auto;
+  .carousal-container {
+      display:flex;
+      padding: 0 50px;
+      gap: 10px;
+      width: max-content;
+  }
   .course-card {
     height: 27rem !important;
     width: 100%;
+  }
+  .course-card img {
+    object-fit: cover;
   }
   h5 {
     font-size: 1rem;
@@ -180,6 +191,7 @@ const Container = styled.div`
     border: 1px solid #ddd;
     padding: 0px;
     margin: 10px;
+    max-width: 340px;
     border-radius: 5px;
     width: 100%;
     text-align: center;
